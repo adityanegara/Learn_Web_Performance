@@ -84,4 +84,15 @@ E) Cumulative Layout Shift
     D.2) Menghindari CLS Buruk
         : Sediakan placeholder untuk konten yang tampil secara asynchronous. 
 
+F) Cara Mengukur LCP, FID, dan CLS
+    F.1) PageSpeed Insight
+    : Matriks first input delay hanya dapat diukur ketika website yang kita memiliki memiliki Field
+    data yang cukup. Field data ialah pengguna asi yang menggunakan website tersebut. Bila tidak ada
+    field data yang cukup. Gunakan saja Total Blocking Time.
+
+    F.2) Web.dev/measure
+    F.3) Lighthouse
+
+
+
 
