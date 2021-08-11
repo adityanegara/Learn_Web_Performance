@@ -1,0 +1,87 @@
+A) Apa itu Kecepatan
+    A.1) Detike Ke 1.0
+    : Pada detik ini broweser masih menampilkan website putih bersih.
+    Bila proses ini berjalan lama pengguna akan berfikir 
+    "Apakah internet saya berkendala?" dan tak jarang pengguna
+    menghentikan proses ini dan beralih ke aktifitas lain. Bila proses
+    berlangsung cepat, pengguna akan menunggu ke tahap berikutnya.
+
+    A.2) Detik Ke 1.5(First Paint)
+    : Browser mulai menunjukan tampilan pertamanya, namun tampilan tersebut belum
+    bisa pengguna terka. Setidaknya pada proses ini pengguna tidak lagi berpikir bahwa jaringan
+    internet dia sedang mengalami kendala. Namun ia tetap berharap server terus menanggapi 
+    permintaannya. Tahapan ini disebut dengan First Paint
+
+    A.3) Detik Ke 2.0(First Contentful Paint)
+    : Pada detik ini pengguna sudah mulai melihat komponen UI yang cukup jelas. 
+    Pengguna akan merasakan "Yes! Sudah muncul!" karena website sudah mulai menampilkan
+    konten yang jelas seperti teks atau tombol, walaupun konten yang ia inginkan belum muncul. 
+
+    A.4) Detik 2.5-3.0(First Meaningful Paint)
+    : Konten yang pengguna inginkan tampak pada browser. Di sini pengguna mulai berfikir 
+    "Apakah konten ini yang saya inginkan?". Bila tahap ini berjalan lama
+    tak jarang pengguna sudah mulai berinteraksi dengan halaman, contohnya menekan tombol 
+    atau menggeser-geser konten yang ditampilkan.
+
+    A.5) Detik 3.5 (Time to interaction)
+    : Konten ditampilkan seluruhnya. dan tidak ada proses rendering lagi yang terjadi hingga pengguna
+    berinteraksi dengan halaman website.
+
+B) Web Vitals
+    : Di tahun 2020 Google memperkenalkan Web Vitals sebagai panduan terpadu dan matriks terbaru
+    untuk memberikan pelayanan yang prima pada experience pengguna dalam mengakses website. 
+    Google menginisiasikan Web Vitals dengan tujuan untuk menyederhanakan lanskap, dan membantu web untuk
+    fokus terhadap hal yang paling vitals menurut google.
+
+    B.1) 3 Core Web Vitals
+    : Ada 3 pilar yang membentuk experience dalam mengakses halaman web yakni:
+        B.1.1) Loading Performance
+        : Seberapa cepat komponen UI tampil di layar?
+        B.1.2) Responsiveness
+        : Seberapa cepat halaman bereaksi terhadap pengguna
+        B.1.3) Visual Stabiliy
+        : Apakah Komponen UI Bergeser ketika terdapat konten baru?
+
+    B.2) Metrik Pengukuran
+    : Untuk mengukur aspek-aspek penting dari experience pengguna ini, Google memilih 3 metrik yang sesuai
+    yakni Largest Contentful Paint(LCP), First Input Delay(FID), Culmulative Layout Shift(CLS).
+
+C) Largest Contentful Paint
+    : Mengukur titik dimana elemen konten terbesar muncul di layar. Contohnya bila 
+    website kita menampilkan beberapa teks saja namun memiliki konten gambar yang besar, maka gambar
+    itulah yang dianggap LCP.
+
+    C.1) Penilaian LCP
+        : 0 - 2.5 detik : Baik
+          2.5 - 4 detik : Butuh Perbaikan
+          4.0 > detik   : Buruk
+
+    C.2) Yang Mempengaruhi LCP
+        : 1) Kecepatan Server menanggapi permintaannya
+          2) Proses render yang terblokir oleh Javascript/CSS
+          3) Proses rendering dari sisi klien.
+
+D) First Input Delay
+    : Mengukur delay ketika pengguna pertama kali berinteraksi dengan komponen pada halaman 
+    hingga browser memproses event handler yang ditetapkan di komponen tersebut.
+    Interaksi yang dilakukan bisa seperti menekan tautan, tombol, navigasi, atau komponen interaktif 
+    lainnya.
+
+    D.1) Penilaian FID
+        : 0 - 100 milisecond : Baik
+          100-300 milisecond : Butuh Perbaikan
+          300 > milisecond   : Buruk
+
+E) Cumulative Layout Shift
+    : Mengukur kestabilan layout yang ditampilkan. Sebisa mungkin elemen UI yang ditampilan.
+    Seisa mungkin elemen UI yang sudah tampil tidak terjadi penggeseran secara signifikan. 
+
+     D.1) Penilaian CLS
+        : 0 - 10% Pergeseran  : Baik
+          10 - 25% Pergeseran : Butuh Perbaikan
+          25% > Pergeseran    : Buruk
+
+    D.2) Menghindari CLS Buruk
+        : Sediakan placeholder untuk konten yang tampil secara asynchronous. 
+
+
