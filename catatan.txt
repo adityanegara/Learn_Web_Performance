@@ -123,4 +123,65 @@ G) Ubah Gif Ke Video
         <source src="./path/to/image/animation-footage.mp4" type="video/mp4">
       </video>
 
+H) Image Responsive
+    : Biasanya kita hanya menyediakan satu berkas gambar untuk dikonsumsi pada 
+    layar perangkat desktop maupun seluler. Hal tersebut terkesan mubazir ketika 
+    pengguna mengakses pada perangkat seluler, karena gambar beresolusi besar tentu
+    memiliki ukuran yang besar juga. 
+
+    H.1) Element <picture>
+    : <picture>
+        <source media="(max-width: 600px)" srcset="./path/to/images/image-small.jpg">
+        <img 
+            src="./path/to/images/image-large.jpg"
+            alt ="">
+        </img>
+      </picture>
+
+        H.1.1) Atribut media
+        : Browser akan mengevaluasi apakah kondisi media tersebut tepat atau tidak. 
+        Jika tidak, maka gambar pada srcset tidak akan digunakan. dan proses 
+        evaluasi beralih ke tag <source> selanjutnya atau menggunakan default src.
+
+        H.1.2) srcset
+        : Atribut ini digunakan untuk mendefinisikan URL dari aset yang akan digunakan
+
+        H.1.3) type
+        : mendefinisikan tipe dari gambar yang akan ditampilkan, ditulis dengan menggunakan
+        format MIME(media type).Sama seperti atribut media, jika browser tidak support dengan
+        tipe ini, maka akan beralih ke source laina tau menggunakan default src.
+
+    H.2) Tips Penerapan
+        H.2.1)
+        : Manffatkan atribut type, dengan menyediakan dua versi gambar. Satu yang bisa
+        digunakan oleh semua browser(JPG/PNG) dan satunya lagi mempunyai sistem kompresi
+        yang baik(WEBP). 
+
+        H.2.2)
+        : Pada default src, spesifikasikan sumber gambar yang dibuka dengan baik oleh semua 
+        browser. (JPG/PNG)
+
+        H.2.3) Jangan lupa untuk membedakan setiap value pada atribut media.
+
+        <picture>
+            <source media="(max-width: 600px)" srcset="./path/to/images/image-small.webp" type="image/webp">
+            <source media="(max-width: 600px)" srcset="./path/to/images/image-small.jpg" type="image/jpeg">
+            <img
+                src="./path/to/images/image-large.jpg"
+                alt=""></img>
+        </picture>
+
+    H.3) SHARP
+    : Sharp ialah tools untuk menghasilkan aset gambar dengan variasi ukuran.
+
+    const sharp = require('sharp');
+    const fs = require('fs');
+    const directory = './images';
+    fs.readdirSync(directory).forEach(file => {
+        shart(`${directory}/${file}`)
+            .resize(200,100)
+            .toFile(`${directory}/${file}-small.jpg`);
+    });
+ 
+
 
