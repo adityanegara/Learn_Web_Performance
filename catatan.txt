@@ -182,6 +182,8 @@ H) Image Responsive
             .resize(200,100)
             .toFile(`${directory}/${file}-small.jpg`);
     });
+
+I) WebP Image
  
 
 
