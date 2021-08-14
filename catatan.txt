@@ -93,6 +93,34 @@ F) Cara Mengukur LCP, FID, dan CLS
     F.2) Web.dev/measure
     F.3) Lighthouse
 
+G) Ubah Gif Ke Video
+    G.1) Konversi GIF Ke mp4 menggunakan package fluent-ffmepg
+    : const path = require('path');
+      const FFmpeg = require('fluent-ffmpeg');
+      const gify = new FFmpeg({
+          source: path.resolve(__dirname, 'path/to/image/animation-footage.gif');
+      });
+      gify.clone()
+      .withVideoCodec('libx264')
+      .withFps(25)
+      .toFormat('mp4')
+      .saveToFile(path.resolve(dirname, 'path/to/image/animation-footage.mp4'));
 
+    G.2) Konversi Gif ke webm
+    : const path = require('path');
+      const FFmpeg = require('fluent-ffmpeg');
+      const gify = new FFmpeg(
+          {source: path.resolve(__dirname, 'path/to/image/animation-footage.mp4')
+      });
+      gify.clone()
+      .withFps(25)
+      .toFormat('webm')
+      .saveToFile(path.resolve(__dirname, 'path/to/image/animation-footage.mp4'));
+
+    G.3) Memasukan video pada html
+    : <video autoplay loop muted playsinline>
+        <source src="./path/to/image/animation-footage.webm" type="video/webm">
+        <source src="./path/to/image/animation-footage.mp4" type="video/mp4">
+      </video>
 
 
