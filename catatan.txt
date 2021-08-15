@@ -202,6 +202,9 @@ I) Lazy Loading
         I.2.2) Menerapkan pada Element
         : <img data-src="image.jpg" src="placeholder.jpg class="lazyload" alt=""/>
         atribut src merupakan placeholder sebelum gambar asli berhasil ditampilkan
+
+J) Optimasi Bundle
+    : 
  
 
 
