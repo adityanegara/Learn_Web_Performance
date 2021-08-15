@@ -203,8 +203,91 @@ I) Lazy Loading
         : <img data-src="image.jpg" src="placeholder.jpg class="lazyload" alt=""/>
         atribut src merupakan placeholder sebelum gambar asli berhasil ditampilkan
 
-J) Optimasi Bundle
-    : 
+J) Code Splitting
+    : Memecah modul menjadi beberapa berkas bundle.
+
+    J.1) Dynamic Import(Lazy Load module)
+    : Metode ini menggunakan fungsi import() yang dituliskan langsung pada baris kode 
+    ketika sebuah modul digunakan. 
+
+        J.1.1) Penggunaan Lodash tanpa dynamic import
+        : import filter from 'lodash.filter';
+          const users = [
+              {
+                  name: 'John',
+                  isSingle: false
+              },
+              {
+                  name: 'Ibrahim',
+                  isSingle: true
+              },
+              {
+                  name: 'Mariam',
+                  isSingle: false,
+              },
+          ]
+        filter(users, {'isSingle' : true});
+
+         J.1.1) Penggunaan Lodash dengan dynamic import
+        : const users = [
+              {
+                  name: 'John',
+                  isSingle: false
+              },
+              {
+                  name: 'Ibrahim',
+                  isSingle: true
+              },
+              {
+                  name: 'Mariam',
+                  isSingle: false,
+              },
+          ]
+        import('lodash.filter')
+            .then((module) => module.default)
+            .then((filter) => filter(users, {'isSingle' : true}))
+            .catch((error) => {})
+
+        Module filter akan dibundel terpisah, dan akan diminta ketika baris kode tersebut dieksekusi.
+        Tetapi bila kita menginginkan teknik ini hanya "memecah" saja cukup tambahkan
+         /* webpackPrefetch: true */ dalamfungsi import tersebut.
+
+    J.2) Prevent Duplication(Split Chunks)
+    : Memecah vendor code engan SplitChunksPlugins
+
+      const path = require('path');
  
+        module.exports = {
+        entry: path.resolve(__dirname, 'src/scripts/index.js'),
+        output: {
+        filename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+        },
+        optimization: {
+        splitChunks: {
+            chunks: 'all',
+            minSize: 20000,
+            maxSize: 70000,
+            minChunks: 1,
+            maxAsyncRequests: 30,
+            maxInitialRequests: 30,
+            automaticNameDelimiter: '~',
+            enforceSizeThreshold: 50000,
+            cacheGroups: {
+            defaultVendors: {
+                test: /[\\/]node_modules[\\/]/,
+                priority: -10
+            },
+            default: {
+                minChunks: 2,
+                priority: -20,
+                reuseExistingChunk: true
+            }
+            }
+        }
+        },
+        /* other configuration */
+        };
+
 
 
