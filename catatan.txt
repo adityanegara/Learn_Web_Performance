@@ -183,7 +183,25 @@ H) Image Responsive
             .toFile(`${directory}/${file}-small.jpg`);
     });
 
-I) WebP Image
+I) Lazy Loading
+    : Lazy loading merupakan teknik dimana gambar akan dimuat ketika memang dibutuhkan saja.
+    Sehingga seluruh gambar pada halaman tidak dimuat secara bersamaan.
+
+    I.1) Penerapan Native
+    : <img loading="lazy" width ="400" height="400" src="./path/to/images.jpg" alt="">
+    Agar native lazy loading dapat berjalan optimal kita perlu menerapkan nilai width dan height 
+    pada gambar secara eksplitsit.
+
+    I.2) Penerapan package
+    : Menggunakan Package Lazysizes dipastikan lazyload dapat berjalan pada browser versi lama
+
+        I.2.1) Memasang pada Javascript
+        : import 'lazysizes';
+          import 'lazysizes/plugins/parent-fit/ls-parent-fit';
+
+        I.2.2) Menerapkan pada Element
+        : <img data-src="image.jpg" src="placeholder.jpg class="lazyload" alt=""/>
+        atribut src merupakan placeholder sebelum gambar asli berhasil ditampilkan
  
 
 
